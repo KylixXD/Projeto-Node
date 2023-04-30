@@ -9,12 +9,15 @@ const curso = (sequelize, DataTypes) => {
       ch: {
         type: DataTypes.INTEGER
       },
+      categoria: {
+        type: DataTypes.STRING
+      },
     },
       {
         tableName: "curso"
       }
       );
     return Curso;
-}
+};
 
 export default curso;

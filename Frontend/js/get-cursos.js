@@ -13,6 +13,7 @@ function preencheTela(cursos) {
     <div class="cursos">
         <h3>${curso.nome}</h3>
         <p>Carga Horária: ${curso.ch} h</p>
+        <p>Categoria: ${curso.categoria}</p>
       </div>
     `;
     divCursos.innerHTML = divCursos.innerHTML + novoCursoHTML;

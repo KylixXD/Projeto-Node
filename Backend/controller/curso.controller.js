@@ -1,5 +1,5 @@
 export class CursoController {
-  constructor( CursoModel){
+  constructor(CursoModel){
     this.curso = CursoModel;
   }
 
@@ -11,10 +11,9 @@ export class CursoController {
   async adicionar(cursoDTO){
     try {
       console.log(cursoDTO)
-      await this.curso.create({cursoDTO});
+      await this.curso.create(cursoDTO);
     } catch (error) {
       console.log(error);    
     }
   }
-
 }
