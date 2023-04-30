@@ -7,12 +7,8 @@ export class CursoController {
   }
  // create
   async create(curso){
-    try {
       console.log(curso)
       await Curso.create(curso);
-    } catch (error) {
-      console.log(error);    
-    }
   }
 
   //delete
@@ -26,12 +22,8 @@ export class CursoController {
 
   //update
   async update(curso){
-    try {
       const cursoUpdate = await Curso.findByPk(curso.id)
       console.log(curso)
       await cursoUpdate.update({...curso});
-    } catch (error) {
-      console.log(error);    
-    }
   }
 }
