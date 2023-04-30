@@ -1,0 +1,43 @@
+html, body, main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    background-color: rgb(151, 233, 162);
+}
+
+
+.card-body {
+    width: 150px;
+}
+
+#cursos {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#cursos .card {
+    padding: 10px;
+}
+
+#cursos .buttons {
+    display: flex;
+}
+
+#cursos .buttons button {
+    margin: 0px 4px;
+    width: 100%;
+    display: flex;
+    border:none;
+    outline: none;
+    background-color: transparent;
+}

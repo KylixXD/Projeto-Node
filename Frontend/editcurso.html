@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/cursos.css">
+	<script src="./js/jquery-3.6.4.min.js"></script>
+	<script type="module" src="./js/main.services.js"></script>
+	<title>Cursos EAD</title>
+</head>
+
+<body>
+<div class="curso">
+    <h3>Editar Curso</h3>
+    <form id="edit-curso" >
+        <div>
+            <label for="nome" >Nome do Curso:</label>
+            <input type="text" id="nome"  placeholder="Curso" required>
+
+            <label for="ch" >Carga Horária:</label>
+            <input type="text" id="ch"  placeholder="Carga Horária" required>
+
+            <label for="cat" >Categoria:</label>
+            <input type="text" id="cat"  placeholder="categoria"  required>
+
+            <button onclick="return false;" id="btn-editar" >Enviar</button>
+
+        </div>
+    </form>
+
+
+    <script>
+
+        $(window).on('load', () => {
+            
+            $('#btn-editar').click(function(ev) {
+                var formData = new FormData();
+                formData.append("id", window.location.href.split('id=')[1]);
+                formData.append("nome", $("#nome").val());
+                formData.append("ch",   $("#ch").val());
+                formData.append("categoria",  $("#cat").val()); 
+                const _form = Object.fromEntries(formData);
+                for(let key in _form){
+                    if (_form[key] == "") {
+                        console.log("campos vazios");
+                        return false;
+                    }
+                };
+                
+                document.services.CursoService.update(formData);
+            }) 
+
+        })
+        
+    </script>
+
+</div>
+</body>

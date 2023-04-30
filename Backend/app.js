@@ -14,8 +14,6 @@ app.use(express.json());
 app.use("/", router);
 
 // Conexão com o dices Bank 
-sequelize.sync().then(()=> {
-  console.log("Conectado ao banco de dados com sucesso!");
-});
+sequelize.sync().then(()=> {});
 
-app.listen(PORT , () =>console.log("Servidor rodando na porta " + PORT));
+app.listen(PORT , () => '' + PORT);

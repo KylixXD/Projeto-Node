@@ -1,18 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Proj Node</title>
-    <link rel="stylesheet" href="css/index.css" />
-  </head>
-  <body>
-    <h2>Cursos</h2>
-    <div id="cursos"></div>
-    <div>
-      <button>Adicionar Curso</button>
-    </div>
-  </body>
-  <script src="js/get-cursos.js"></script>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/cursos.css">
+	<script src="./js/jquery-3.6.4.min.js"></script>
+	<script type="module" src="./js/main.services.js"></script>
+	<title>Cursos EAD</title>
+</head>
+<body>
+  <div id="cursos">Cursos</div>
+	<main>
+		<div id="template-card" style="display: none;"></div>
+	</main>
+	<a class: "create-button" href="createcurso.html"><button><img src="icons/plus-square.svg" alt=""></button></a>
+</body>
+
+<footer>
+
+	<script>
+		
+		$(window).on('load', async () => {
+			
+			$('#template-card').load('card.html');
+			console.log('populando cursos');
+			document.services.CursoService.setMethod('GET');
+			const cursos = await document.services.CursoService.fetchService('/cursos');			
+			cursos.forEach(curso => {
+				let card = $('#template-card').html()
+					.replaceAll('$_ID', curso.id)
+					.replace('$_NOME', curso.nome)
+					.replace('$_CH', curso.ch)
+          			.replace('$_CATEGORIA', curso.categoria);
+				$('#cursos').append(card)
+			});
+
+			$('.btn-delete').click(function (ev) {
+				const cursoId = $(this).attr('curso-id');								
+				document.services.CursoService.delete({
+					id: cursoId,
+					onsuccess: () => window.location.reload(),
+					onerror: () => alert('erro')
+				});					
+
+			})
+
+		})	
+
+	</script>
+
+
+</footer>
+
 </html>

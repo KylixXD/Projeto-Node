@@ -6,10 +6,9 @@ const cursoController = new CursoController();
 
 cursoRouter.get('/', async (req, res) => {
   try {
-    res.json(await cursoController.getAll())
-    res.sendStatus(200)
+    res.json(await cursoController.getAll()).status(200)
   } catch (error) {
-    res.sendStatus(500) 
+    res.send(500) 
   } 
 }) 
 
@@ -28,7 +27,7 @@ cursoRouter.delete('/delete/:id', async (req , res) => {
     const id = req.params.id;
     console.log(id)
     await cursoController.delete(id)
-    res.sendStatus(200)
+    res.sendStatus(200);
   } catch (error) {
     res.sendStatus(500)
   }  
@@ -37,6 +36,7 @@ cursoRouter.delete('/delete/:id', async (req , res) => {
 cursoRouter.patch('/update', async (req, res) => {
   const curso = req.body;
   try {
+    console.log(curso)
     await cursoController.update({...curso}) 
     res.sendStatus(200)
   } catch (error) {
