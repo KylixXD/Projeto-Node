@@ -1,5 +1,5 @@
 import express from "express"
-import routes from "./routes/index.js"
+import router from "./routes/index.js"
 import sequelize from "./config/sequelize.js";
 import cors from "cors"
 
@@ -10,8 +10,8 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-//Rota
-app.use("/", routes);
+//Rotas
+app.use("/", router);
 
 // Conexão com o dices Bank 
 sequelize.sync().then(()=> {

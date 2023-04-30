@@ -1,19 +1,25 @@
-export class CursoController {
-  constructor(CursoModel){
-    this.curso = CursoModel;
-  }
+import Curso from "../models/curso.model.js";
 
+export class CursoController {
   async getAll(){
-    const cursos = await this.curso.findAll();
+    const cursos = await Curso.findAll();
     return cursos;
   }
 
-  async adicionar(cursoDTO){
+  async create(curso){
     try {
-      console.log(cursoDTO)
-      await this.curso.create(cursoDTO);
+      console.log(curso)
+      await Curso.create(curso);
     } catch (error) {
       console.log(error);    
     }
+  }
+  //delete
+  async delete(id){
+    await Curso.destroy({
+      where:{
+        id: id 
+      }
+    })
   }
 }

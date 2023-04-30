@@ -1,23 +1,27 @@
+import sequelize from "../config/sequelize.js";
+import { DataTypes } from "sequelize";
 
-const curso = (sequelize, DataTypes) => {
-  const Curso = sequelize.define(
-    "Curso",
-    {
-      nome: {
-        type: DataTypes.STRING
-      },
-      ch: {
-        type: DataTypes.INTEGER
-      },
-      categoria: {
-        type: DataTypes.STRING
-      },
+const Curso = sequelize.define(
+  "Curso",
+  {
+    id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
-      {
-        tableName: "curso"
-      }
-      );
-    return Curso;
-};
+    nome: {
+      type: DataTypes.STRING
+    },
+    ch: {
+      type: DataTypes.INTEGER
+    },
+    categoria: {
+      type: DataTypes.STRING
+    }
+  },
+  {
+    tableName: "curso"
+  }
+); 
 
-export default curso;
+export default Curso;
